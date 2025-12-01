@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Santolaria López AR</title>
-  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
-</head>
-<body style="margin:0; overflow:hidden;">
-  <a-scene embedded arjs>
-    <a-marker preset="hiro">
-      <a-entity>
-        <a-sphere radius="0.5"></a-sphere>
-        <a-entity text="value: Santolaria López; color: blue;" position="-1 1 0"></a-entity>
-      </a-entity>
-    </a-marker>
-    <a-entity camera></a-entity>
-  </a-scene>
-</body>
+  <head>
+    <title>Santolaria López AR</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      
+      <!-- Marcador Hiro (podés cambiarlo por otro) -->
+      <a-marker preset="hiro">
+
+        <!-- OBJETO PRINCIPAL QUE APARECE EN RA -->
+        <a-image 
+          src="./firma_santolaria_lopez.png"
+          position="0 0.5 0"
+          rotation="-90 0 0"
+          width="2"
+          height="2">
+        </a-image>
+
+        <!-- Animación de estrellas -->
+        <a-entity position="0 1 0">
+          <a-sphere radius="0.1" color="#FFD700"
+            animation="property: position; to: 0 1.5 0; dir: alternate; dur: 2000; loop: true">
+          </a-sphere>
+        </a-entity>
+
+        <!-- Texto flotante -->
+        <a-entity 
+          text="value: Santolaria López; color: #00ccff; align: center; width: 4"
+          position="0 1.5 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 4000">
+        </a-entity>
+
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
